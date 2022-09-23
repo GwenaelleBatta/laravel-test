@@ -22,6 +22,7 @@ class CommentsSeeder extends Seeder
         $mod = rand(2, 3);
         $authors = DB::table('authors')->select('id')->get();
         $posts = DB::table('posts')->select('id')->get();
+        define('MAX_RATINGS', 5);
 
         for ($i = 0; $i < POSTS_COUNT; $i++) {
             if ($i % $mod) {
@@ -33,6 +34,7 @@ class CommentsSeeder extends Seeder
                         'body' => $faker->text,
                         'author_id' => $authors[rand(0, AUTHORS_COUNT - 1)]->id,
                         'post_id' => $post_id,
+                        'rating' => rand(0, MAX_RATINGS)
                     ]);
                 }
             }
