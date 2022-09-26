@@ -21,7 +21,7 @@
                     <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Posts</h1>
                     @include('partials/_order-posts')
                 </div>
-                @foreach($posts as $post)
+                @foreach($user['posts'] as $post)
                     <article class="mt-6">
                         <div class="flex flex-col max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
                             <div class="flex items-center justify-between">
@@ -68,7 +68,7 @@
                 @endforeach
                 <div class="mt-8">
                     <div class="flex">
-                        {{$posts->links()}}
+{{--                        {{$user['posts']->links()}}--}}
                     </div>
                 </div>
             </div>

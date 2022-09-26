@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\AsideController;
+use App\Http\Controllers\PostByAuthorsController;
+use App\Http\Controllers\PostByCategoriesController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -19,16 +23,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PostController::class, 'index']);
 
 Route::get('/posts', [PostController::class, 'index']);
 
-Route::get('/posts/{post}', function (Post $post) {
-    return $post->load('comments','categories');
+Route::get('/authors/{user}/posts', [PostByAuthorsController::class, 'index']);
 
-});
+Route::get('/categories/{category}/posts', [PostByCategoriesController::class, 'index']);
+
+Route::get('/posts/{post}', [PostController::class, 'show']);
+
 Route::get('/categories/{category}', function (Category $category) {
     return $category->load('posts');
 
