@@ -18,9 +18,9 @@ class Comment extends Model
     {
         return DB::table('comments')->join('posts','post_id','=','posts.id')->where('post_id',$id)->select('comments.*')->get();
     }
-    public function get_by_author($id)
+    public function get_by_user($id)
     {
-        return DB::table('comments')->join('authors','author_id','=','authors.id')->where('author_id',$id)->select('comments.*')->get();
+        return DB::table('comments')->join('users','user_id','=','users.id')->where('user_id',$id)->select('comments.*')->get();
     }
     public function avg_by_ratings($slug)
     {

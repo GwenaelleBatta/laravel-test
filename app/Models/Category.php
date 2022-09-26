@@ -20,6 +20,6 @@ class Category extends Model
     //Problème
     public function get_by_post($id)
     {
-        return DB::table('categories')->join('category_post','category_id','=','categories.id')->join('posts','posts.id','=','post_id')->where('posts.id','a30255b4-ae04-4cfe-9ad8-ecbd561560f5')->select('categories.slug','posts.slug')->get();
+        return DB::table('categories')->join('category_post','category_id','=','categories.id')->where('category_post.post_id',$id)->select('categories.slug','categories.name')->get();
     }
 }

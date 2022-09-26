@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('authors', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('name')->nullable();
-            $table->string('slug')->nullable()->unique();
-            $table->tinyText('avatar')->nullable();
-            $table->string('email');
-            $table->string('password');
-            $table->uuid('tokens');
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->text('body');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('authors');
+        Schema::dropIfExists('comments');
     }
 };

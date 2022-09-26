@@ -10,10 +10,10 @@ class Token extends Model
 {
     use HasFactory;
     // Revoir fonction
-    public function updateToken($author)
+    public function updateToken($user)
     {
-        return  DB::table('authors')->where("id",$author['id'])->updateOrInsert([
-            ':tokens' => $author['tokens'],
+        return  DB::table('users')->where("id",$user['id'])->updateOrInsert([
+            ':tokens' => $user['tokens'],
         ]);
     }
 }

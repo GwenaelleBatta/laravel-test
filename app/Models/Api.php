@@ -11,11 +11,11 @@ class Api extends Model
     use HasFactory;
     public function getApi($token)
     {
-        return DB::table('posts')->join('authors','author_id','=','authors.id')->where('authors.tokens',$token)->get();
+        return DB::table('posts')->join('users','user_id','=','users.id')->where('users.tokens',$token)->get();
     }
-    public function api_add_author($id)
+    public function api_add_user($id)
     {
-        return DB::table('authors')->join('posts','author_id','=','authors.id')->where('posts.id','a30255b4-ae04-4cfe-9ad8-ecbd561560f5')->get();
+        return DB::table('users')->join('posts','user_id','=','users.id')->where('posts.id','a30255b4-ae04-4cfe-9ad8-ecbd561560f5')->get();
     }
     public function api_add_comment($id)
     {

@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -41,4 +42,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function get()
+    {
+        return DB::table('users')->get();
+    }
+    public function find_by_email($email)
+    {
+        return DB::table('users')->where('email',$email)->first();
+    }
+    public function find_by_slug($slug)
+    {
+        return DB::table('users')->where('slug',$slug)->first();
+    }
+    //A revoir plus tard
+    public function updateUser($user)
+    {
+        return DB::table('users')->updateOrInsert([
+            ':id' => $user['id'],
+            ':email' => $user['email'],
+            ':password' => $user['password'],
+            ':avatar' => $user['avatar']
+        ]);
+    }
 }
