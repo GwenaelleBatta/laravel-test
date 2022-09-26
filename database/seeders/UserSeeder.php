@@ -20,11 +20,11 @@ class UserSeeder extends Seeder
     {
         $faker = Factory::create();
         for ($i = 0; $i < 10; $i++) {
-            $name = $i > 0 ? strtolower($faker->name()) : 'Dominique Vilain';
+            $name = $i > 0 ? strtolower($faker->name()) : 'Gwenaelle Batta';
             $slug = Str::slug($name);
             $avatar = $faker->imageUrl(128, 128, true, 'people', $name);
-            $email = $i > 0 ? $faker->unique()->safeEmail : 'dominique.vilain@hepl.be';
-            $password = crypt('change_this', PASSWORD_DEFAULT);
+            $email = $i > 0 ? $faker->unique()->safeEmail : 'gwenaelle.batta@student.hepl.be';
+            $password = bcrypt('change_this');
             DB::table('users')
                 ->insert(
                     compact('name', 'slug', 'avatar', 'email', 'password')
