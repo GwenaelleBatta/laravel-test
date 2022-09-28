@@ -7,9 +7,11 @@
         <div>
             <form action="/" method="GET">
                 <label class="hidden" for="search">Search</label>
-                <input class="border-solid border-black" type="search" name="search" id="search" placeholder="Search..." />
+                <input class="border-solid border-black" type="search" name="search" id="search"
+                       placeholder="Search..."/>
                 <label class="hidden" for="s">Send</label>
-                <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md ml-1" type="submit" id="s" name="s" value="search" />
+                <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md ml-1"
+                       type="submit" id="s" name="s" value="search"/>
                 <input type="hidden" name="action" value="search">
                 <input type="hidden" name="resource" value="post">
             </form>
@@ -18,15 +20,21 @@
             <h2 class="sr-only">Main Navigation</h2>
             <a href="/"
                class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Home</a>
-{{--            <a href="/authors/{{$author->id}}/posts">{{$author->name}}</a>--}}
-                {{--            Add Auth Stuff--}}
-            <a href="?action=create&resource=post" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">New Post</a>
-            <form action="/"
-                  method="post">
-                <input type="hidden" name="action" value="logout">
-                <input type="hidden" name="resource" value="auth">
-                <button type="submit">Logout</button>
-            </form>
+            @guest
+                <a href="/auth/login"
+                   class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Login</a>
+
+            @endguest
+            @auth
+                <a href="/auth/{{$author->user()->slug}}"
+                   class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">{{$author->user()->name}}</a>
+                <a href="/posts/create" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">New Post</a>
+                <form action="/"
+                      method="post">
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
+            @endauth
         </nav>
     </div>
 </header>
