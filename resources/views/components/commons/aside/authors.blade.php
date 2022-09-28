@@ -21,5 +21,10 @@
                 </li>
             @endforeach
         </ul>
+        @if(!request()->has('author-expended'))
+        <a href="{{$_SERVER['REQUEST_URI']}}?author-expended">View all Author</a>
+        @else
+        <a href="{{strtok($_SERVER['REQUEST_URI'], "?")}}">Reduce Author</a>
+        @endif
     </div>
 </section>

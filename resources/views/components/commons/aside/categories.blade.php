@@ -10,5 +10,10 @@
                 </li>
             @endforeach
         </ul>
+        @if(!request()->has('category-expended'))
+            <a href="{{$_SERVER['REQUEST_URI']}}?category-expended">View all Category</a>
+        @else
+            <a href="{{strtok($_SERVER['REQUEST_URI'], "?")}}">Reduce Category</a>
+        @endif
     </div>
 </section>

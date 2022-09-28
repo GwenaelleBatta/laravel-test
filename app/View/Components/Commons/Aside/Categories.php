@@ -3,7 +3,9 @@
 namespace App\View\Components\Commons\Aside;
 
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 use Illuminate\View\Component;
 
 class Categories extends Component
@@ -16,7 +18,12 @@ class Categories extends Component
      */
     public function __construct()
     {
-        $this->categories = Category::withCount('posts')->get();
+        if(!request()->has('category-expended')){
+            $this->categories = Category::withCount('posts')->limit(3)->get();
+        }else{
+            $this->categories = Category::withCount('posts')->get();
+        }
+
     }
 
     /**

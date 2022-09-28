@@ -4,6 +4,7 @@ namespace App\View\Components\Commons\Aside;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 use Illuminate\View\Component;
 
 class Authors extends Component
@@ -16,7 +17,11 @@ class Authors extends Component
      */
     public function __construct()
     {
-        $this->users = User::withCount(['posts'])->get();
+        if(!request()->has('author-expended')){
+            $this->users = User::withCount(['posts'])->limit(5)->get();
+        }else{
+            $this->users = User::withCount(['posts'])->get();
+        }
     }
 
     /**
