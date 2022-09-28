@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 
 const DEFAULT_SORT_ORDER = 'DESC';
@@ -126,7 +127,7 @@ class Post extends Model
 //    {
 //        return DB::table('posts')->where('slug', $slug)->get();
 //    }
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     public function comments(): HasMany
     {
