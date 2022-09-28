@@ -35,7 +35,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-200">
-@include('partials/_main-nav')
+<x-commons.navigation></x-commons.navigation>
 <div class="overflow-x-hidden bg-gray-100">
     <main class="px-6 py-8">
         <div class="container flex justify-between mx-auto">
@@ -69,7 +69,7 @@
                     </div>
                 </div>
             </article>
-            @include('partials/_aside')
+            <x-commons.aside></x-commons.aside>
         </div>
     </main>
     <footer class="px-6 py-2 text-gray-100 bg-gray-800">

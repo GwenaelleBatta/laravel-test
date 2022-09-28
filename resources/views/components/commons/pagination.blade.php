@@ -1,0 +1,3 @@
+<div>
+    {{$posts->links()}}
+</div>

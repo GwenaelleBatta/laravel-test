@@ -11,7 +11,7 @@
     <title>Les Posts du blog</title>
 </head>
 <body>
-@include('partials/_main-nav')
+<x-commons.navigation></x-commons.navigation>
 <div class="overflow-x-hidden bg-gray-100">
     <main class="px-6 py-8">
         <div class="container flex justify-between mx-auto">
@@ -21,7 +21,7 @@
                     <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Posts</h1>
                     @include('partials/_order-posts')
                 </div>
-                @foreach($category['posts'] as $post)
+                @foreach($posts as $post)
                     <article class="mt-6">
                         <div class="flex flex-col max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
                             <div class="flex items-center justify-between">
@@ -68,11 +68,11 @@
                 @endforeach
                 <div class="mt-8">
                     <div class="flex">
-{{--                        {{$category['posts']->links()}}--}}
+                        <x-commons.pagination :posts="$posts"></x-commons.pagination>
                     </div>
                 </div>
             </div>
-            @include('partials/_aside')
+            <x-commons.aside></x-commons.aside>
         </div>
     </main>
     <footer class="px-6 py-2 text-gray-100 bg-gray-800">

@@ -18,20 +18,15 @@
             <h2 class="sr-only">Main Navigation</h2>
             <a href="/"
                class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Home</a>
-            <?php if (!isset($_SESSION['connected_author'])): ?>
-                <a href="/?action=login&resource=auth"
-                   class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Login</a>
-            <?php else: ?>
-
-                <a href="?action=index&resource=profile" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0"><?= $_SESSION['connected_author']->name ?></a>
-                <a href="?action=create&resource=post" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">New Post</a>
-                <form action="index.php"
-                      method="post">
-                    <input type="hidden" name="action" value="logout">
-                    <input type="hidden" name="resource" value="auth">
-                    <button type="submit">Logout</button>
-                </form>
-            <?php endif; ?>
+{{--            <a href="/authors/{{$author->id}}/posts">{{$author->name}}</a>--}}
+                {{--            Add Auth Stuff--}}
+            <a href="?action=create&resource=post" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">New Post</a>
+            <form action="/"
+                  method="post">
+                <input type="hidden" name="action" value="logout">
+                <input type="hidden" name="resource" value="auth">
+                <button type="submit">Logout</button>
+            </form>
         </nav>
     </div>
 </header>

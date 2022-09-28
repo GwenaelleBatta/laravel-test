@@ -27,9 +27,9 @@ Route::get('/', [PostController::class, 'index']);
 
 Route::get('/posts', [PostController::class, 'index']);
 
-Route::get('/authors/{user}/posts', [PostByAuthorsController::class, 'index']);
+Route::get('/authors/{user}/posts', PostByAuthorsController::class);
 
-Route::get('/categories/{category}/posts', [PostByCategoriesController::class, 'index']);
+Route::get('/categories/{category}/posts', PostByCategoriesController::class);
 
 Route::get('/posts/{post}', [PostController::class, 'show']);
 
