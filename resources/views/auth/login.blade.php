@@ -49,7 +49,7 @@
                     <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Login to the blog</h1>
                 </div>
                 <div class="mt-6">
-                    <form action="/"
+                    <form action="/login"
                           method="post">
                         @csrf
                         <label for="email"

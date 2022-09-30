@@ -21,15 +21,15 @@
             <a href="/"
                class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Home</a>
             @guest
-                <a href="/auth/login"
+                <a href="/login"
                    class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Login</a>
 
             @endguest
             @auth
-                <a href="/auth/{{$author->user()->slug}}"
-                   class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">{{$author->user()->name}}</a>
+                <a href="/auth/{{auth()->user()->slug}}"
+                   class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">{{auth()->user()->name}}</a>
                 <a href="/posts/create" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">New Post</a>
-                <form action="/"
+                <form action="/logout"
                       method="post">
                     @csrf
                     <button type="submit">Logout</button>

@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\AsideController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\PostByAuthorsController;
 use App\Http\Controllers\PostByCategoriesController;
 use App\Http\Controllers\PostController;
@@ -26,27 +25,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PostController::class, 'index']);
 
-Route::get('/posts', [PostController::class, 'index']);
-Route::get('/posts/create', [PostController::class, 'create']);
+// Various posts indexes
+Route::get('posts', [PostController::class, 'index']);
+Route::get('categories/{category:slug}', PostByCategoriesController::class);
+Route::get('authors/{author:slug}', PostByAuthorsController::class);
 
-Route::get('/authors/{user}/posts', PostByAuthorsController::class);
+// Single post
+Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
-Route::get('/categories/{category}/posts', PostByCategoriesController::class);
-
-Route::get('/posts/{post}', [PostController::class, 'show']);
-
-Route::get('/categories/{category}', function (Category $category) {
-    return $category->load('posts');
-});
-
-Route::get('/users/{user:slug}', function (User $user){
-    return $user;
-});
-
-// Gestion du login
-
-Route::get('auth/login', [AuthenticatedSessionController::class, 'create'])->middleware('guest');
-
-Route::post('auth/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');
-
-Route::get('auth/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth');
+// Auth
+Route::get('login', [AuthenticatedSessionController::class, 'create'])->middleware('guest');
+Route::post('login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');
+Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth');
