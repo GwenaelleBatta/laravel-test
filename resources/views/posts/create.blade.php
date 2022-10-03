@@ -42,44 +42,54 @@
                     <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Create Post</h1>
                 </div>
                 <div class="mt-6">
-                    <form action="/"
+                    <form action="/posts/create"
                           method="post">
                         @csrf
-                        <label for="post-title"
-                               class="block mb-2">Post
+                        <label for="title"
+                               class="block mb-2 @error('title') text-red-600 @enderror">Post
                             Title</label>
-                        <input id="post-title"
+                        @error('title')
+                        <div class="text-red-600 my-2">{{ $message }}</div>
+                        @enderror
+                        <input id="title"
                                type="text"
-                               name="post-title"
-                               class="w-full rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                               name="title"
+                               class=" @error('title')  is-invalid outline outline-red-600 outline-2 @enderror w-full rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="{{old('title')}}">
 
-                        <label for="post-excerpt"
-                               class="block mt-8 mb-2">Post
+                        <label for="excerpt"
+                               class="block mt-8 mb-2 @error('excerpt') text-red-600 @enderror">Post
                             Excerpt</label>
-
-                        <textarea name="post-excerpt"
-                                  id="post-excerpt"
+                        @error('excerpt')
+                        <div class="text-red-600 my-2">{{ $message }}</div>
+                        @enderror
+                        <textarea name="excerpt"
+                                  id="excerpt"
                                   rows="5"
-                                  class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                                  class="@error('excerpt')  is-invalid outline outline-red-600 outline-2 @enderror w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">{{old('excerpt')}}</textarea>
 
-                        <label for="post-body"
-                               class="block mt-8 mb-2">Post
+                        <label for="body"
+                               class="block mt-8 mb-2 @error('body') text-red-600 @enderror">Post
                             Body</label>
-
-                        <textarea name="post-body"
-                                  id="post-body"
+                        @error('body')
+                        <div class="text-red-600 my-2">{{ $message }}</div>
+                        @enderror
+                        <textarea name="body"
+                                  id="body"
                                   rows="10"
-                                  class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                                  class=" @error('body')  is-invalid outline outline-red-600 outline-2 @enderror w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">{{old('body')}}</textarea>
 
-                        <label for="post-category"
-                               class="block mt-8 mb-2">Post
+                        <label for="category"
+                               class="block mt-8 mb-2 @error('category') text-red-600 @enderror">Post
                             Category</label>
 
-                        <select name="post-category"
-                                id="post-category"
-                                class="w-full border-rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <select name="category"
+                                id="category"
+                                class="w-full border-rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 @error('category')  is-invalid outline outline-red-600 outline-2 @enderror ">
+                            @error('category')
+                            <div class="text-red-600 my-2">{{ $message }}</div>
+                            @enderror
                             @foreach ($categories as $category)
-                            <option value="<?= $category->id ?>">
+                            <option value="<?= $category->id?>">
                                     <?= ucwords($category->name) ?>
                             </option>
                             @endforeach

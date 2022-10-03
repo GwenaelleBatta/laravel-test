@@ -36,5 +36,8 @@
                 </form>
             @endauth
         </nav>
+        @if(session('success'))
+        <p>{{session('success')}}</p>
+        @endif
     </div>
 </header>

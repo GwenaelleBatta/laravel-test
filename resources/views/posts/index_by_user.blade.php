@@ -20,53 +20,8 @@
                     <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Posts</h1>
                     @include('partials/_order-posts')
                 </div>
-                @foreach($posts as $post)
-                    <article class="mt-6">
-                        <div class="flex flex-col max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
-                            <div class="flex items-center justify-between">
-                                        <span class="font-light text-gray-600">
-                                            {{$post->published_at}}
-                                        </span>
-                                <div class="flex flex-col">
-                                    @foreach ($post->categories as $category)
-                                        <a href="/categories/{{$category->slug}}/posts"
-                                           class="px-2 py-1 font-bold text-gray-100 bg-gray-600 rounded hover:bg-gray-500 mb-2">
-                                            {{ucwords($category->name)}}
-                                        </a>
-                                    @endforeach
-                                </div>
-                            </div>
-                            <h2 class="mt-2">
-                                <a href="/posts/{{$post->id}}"
-                                   class="text-2xl font-bold text-gray-700 hover:underline">
-                                    {{$post->title}}
-                                </a>
-                                <p class="mt-2 text-gray-600">{{$post->excerpt}} </p>
-                            </h2>
-                            <div class="flex items-center justify-between mt-4">
-                                <a href="/posts/{{$post->id}}"
-                                   class="text-blue-500 hover:underline">
-                                    Read more<span class="sr-only"> about {{$post->title}} </span>
-                                </a>
-                                <div class="flex">
-                                    <p class="mr-4">Comments : {{count($post->comments)}}</p>
-                                    <p>Ratings : /5</p>
-                                </div>
-                                <div>
-                                    <a href="/users/{{$post->user->slug}}/posts"
-                                       class="flex items-center">
-                                        <img src=" {{$post->user->avatar}}"
-                                             alt=" {{$post->user->name}}"
-                                             class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block">
-                                        <span
-                                            class="font-bold text-gray-700 hover:underline"> {{ucwords($post->user->name)}}</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                @endforeach
-                <div class="mt-8">
+                <x-commons.posts.article :posts="$posts"></x-posts.article>
+                    <div class="mt-8">
                     <div class="flex">
                         <x-commons.pagination :posts="$posts"></x-commons.pagination>
                     </div>
