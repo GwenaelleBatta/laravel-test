@@ -28,8 +28,8 @@ Route::get('/', [PostController::class, 'index']);
 
 // Various posts indexes
 Route::get('/posts', [PostController::class, 'index']);
-Route::get('/posts/create', [PostController::class, 'create']);
-Route::post('/posts/create', [PostController::class, 'store']);
+Route::get('/posts/create', [PostController::class, 'create'])->middleware('auth');;
+Route::post('/posts/create', [PostController::class, 'store'])->middleware('auth');;
 
 Route::get('/categories/{category:slug}/posts', PostByCategoriesController::class);
 Route::get('/users/{user:slug}/posts', PostByAuthorsController::class);
@@ -38,9 +38,9 @@ Route::get('/users/{user:slug}/posts', PostByAuthorsController::class);
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
 // Auth
-Route::get('/login', [AuthenticatedSessionController::class, 'create'])->middleware('guest');
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login')->middleware('guest');
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth');
 
-Route::get('/register', [RegisterUserController::class, 'create']);
-Route::post('/register', [RegisterUserController::class, 'store']);
+Route::get('/register', [RegisterUserController::class, 'create'])->middleware('guest');
+Route::post('/register', [RegisterUserController::class, 'store'])->middleware('guest');
