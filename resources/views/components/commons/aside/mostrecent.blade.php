@@ -3,14 +3,14 @@
     <div class="flex flex-col max-w-sm px-8 py-6 mx-auto bg-white rounded-lg shadow-md">
         <div class="flex items-center justify-center">
             @foreach ($post->categories as $category)
-                <a href="categories/{{$category->id}}/posts"
+                <a href="categories/{{$category->slug}}/posts"
                    class="px-2 py-1 text-sm text-green-100 bg-gray-600 rounded hover:bg-gray-500">
                     {{ucwords($category->name)}}
                 </a>
             @endforeach
         </div>
         <div class="mt-4">
-            <a href="/posts/{{$post->id}}"
+            <a href="/posts/{{$post->slug}}"
                class="font-bold text-lg font-medium text-gray-700 hover:underline">{{$post->title}}</a>
         </div>
         <div class="flex items-center justify-between mt-4">
@@ -19,7 +19,7 @@
                     src="{{$post->user->avatar}}"
                     alt="avatar"
                     class="object-cover w-8 h-8 rounded-full">
-                <a href="/authors/{{$post->user->id}}/posts"
+                <a href="/users/{{$post->user->slug}}/posts"
                    class="font-bold mx-3 text-sm text-gray-700 hover:underline">{{ucwords($post->user->name)}}</a>
             </div>
             <span

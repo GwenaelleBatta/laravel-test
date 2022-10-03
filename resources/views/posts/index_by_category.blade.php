@@ -30,7 +30,7 @@
                                         </span>
                                 <div class="flex flex-col">
                                     @foreach ($post->categories as $category)
-                                        <a href="/categories/{{$category->id}}/posts"
+                                        <a href="/categories/{{$category->slug}}/posts"
                                            class="px-2 py-1 font-bold text-gray-100 bg-gray-600 rounded hover:bg-gray-500 mb-2">
                                                 {{ucwords($category->name)}}
                                         </a>
@@ -54,7 +54,7 @@
                                     <p>Ratings : /5</p>
                                 </div>
                                 <div>
-                                    <a href="/authors/{{$post->user->id}}/posts"
+                                    <a href="/users/{{$post->user->slug}}/posts"
                                        class="flex items-center">
                                         <img src=" {{$post->user->avatar}}"
                                              alt=" {{$post->user->name}}"

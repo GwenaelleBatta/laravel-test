@@ -4,7 +4,7 @@
         <ul>
 
             @foreach ($categories as $category)
-                <li class="mb-3"><a href="/categories/{{$category->id}}/posts"
+                <li class="mb-3"><a href="/categories/{{$category->slug}}/posts"
                                     class="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">
                         {{ucwords($category->name)}}</a> contains {{$category->posts_count}} posts
                 </li>

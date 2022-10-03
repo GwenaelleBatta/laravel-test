@@ -27,8 +27,10 @@ Route::get('/', [PostController::class, 'index']);
 
 // Various posts indexes
 Route::get('posts', [PostController::class, 'index']);
-Route::get('categories/{category:slug}', PostByCategoriesController::class);
-Route::get('authors/{author:slug}', PostByAuthorsController::class);
+Route::get('posts/create', [PostController::class, 'create']);
+
+Route::get('categories/{category:slug}/posts', PostByCategoriesController::class);
+Route::get('users/{user:slug}/posts', PostByAuthorsController::class);
 
 // Single post
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
