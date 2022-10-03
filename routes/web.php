@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\PostByAuthorsController;
 use App\Http\Controllers\PostByCategoriesController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\UserController;
 use App\Models\Category;
 use App\Models\Post;
@@ -40,3 +41,6 @@ Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->middleware('guest');
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth');
+
+Route::get('/register', [RegisterUserController::class, 'create']);
+Route::post('/register', [RegisterUserController::class, 'store']);
