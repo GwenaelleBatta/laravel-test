@@ -32,6 +32,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<x-head.tinymce-config/>
 <body class="bg-gray-200">
 <div class="overflow-x-hidden bg-gray-100">
     <x-commons.navigation></x-commons.navigation>
@@ -87,6 +88,7 @@
                             Modify post
                         </button>
                     </form>
+                    <x-forms.tinymce-editor/>
                 </div>
             </div>
             <x-commons.aside></x-commons.aside>
