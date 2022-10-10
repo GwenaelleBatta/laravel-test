@@ -81,25 +81,7 @@
                         <label for="category"
                                class="block mt-8 mb-2 @error('category') text-red-600 @enderror">Post
                             Category</label>
-
-                        <select name="category"
-                                id="category"
-                                class="w-full border-rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 @error('category')  is-invalid outline outline-red-600 outline-2 @enderror ">
-                            @error('category')
-                            <div class="text-red-600 my-2">{{ $message }}</div>
-                            @enderror
-                            @foreach ($categories as $category)
-                            <option value="<?= $category->id?>">
-                                    <?= ucwords($category->name) ?>
-                            </option>
-                            @endforeach
-                        </select>
-                        <input type="hidden"
-                               name="action"
-                               value="store">
-                        <input type="hidden"
-                               name="resource"
-                               value="post">
+                        <x-commons.posts.select-categories></x-commons.posts.select-categories>
                         <button type="submit"
                                 class="float-right mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
                             Create new post

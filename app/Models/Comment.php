@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -33,42 +34,17 @@ use Illuminate\Support\Facades\DB;
 
 class Comment extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+
+    protected $fillable = ['body','post_id','user_id'];
 
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
     }
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
-//    public function get()
-//    {
-//        return DB::table('comments')->get();
-//    }
-//    public function get_by_post($id)
-//    {
-//        return DB::table('comments')->join('posts','post_id','=','posts.id')->where('post_id',$id)->select('comments.*')->get();
-//    }
-//    public function get_by_user($id)
-//    {
-//        return DB::table('comments')->join('users','user_id','=','users.id')->where('user_id',$id)->select('comments.*')->get();
-//    }
-//    public function avg_by_ratings($slug)
-//    {
-//        return DB::table('comments')->join('posts','post_id','=','posts.id')->where('posts.slug',$slug)->selectRaw('round(avg(comments.rating))')->get();
-//    }
-//
-//    public function deleteComment($id)
-//    {
-//        DB::table('comments')->where('id',$id)->delete();
-//    }
-//
-//    // Revoir update
-//    public function updateComment($comment)
-//    {
-//        return DB::table('comments')->where("id",$comment['id'])->updateOrInsert([
-//            'id' => $comment['id'],
-//            'body' => $comment['body'],
-//            'ratings' => $comment['rating']
-//        ]);
-//    }
 }

@@ -85,26 +85,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
-//    public function get()
-//    {
-//        return DB::table('users')->get();
-//    }
-//    public function find_by_email($email)
-//    {
-//        return DB::table('users')->where('email',$email)->first();
-//    }
-//    public function find_by_slug($slug)
-//    {
-//        return DB::table('users')->where('slug',$slug)->first();
-//    }
-//    //A revoir plus tard
-//    public function updateUser($user)
-//    {
-//        return DB::table('users')->updateOrInsert([
-//            ':id' => $user['id'],
-//            ':email' => $user['email'],
-//            ':password' => $user['password'],
-//            ':avatar' => $user['avatar']
-//        ]);
-//    }
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
 }

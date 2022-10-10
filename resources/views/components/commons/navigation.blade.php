@@ -30,7 +30,9 @@
             @auth
                 <a href="/auth/{{auth()->user()->slug}}"
                    class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">{{auth()->user()->name}}</a>
-                <a href="/posts/create" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">New Post</a>
+                @can('create', \App\Models\Post::class)
+                    <a href="/posts/create" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">New Post</a>
+                @endcan
                 <form action="/logout"
                       method="post">
                     @csrf
@@ -39,7 +41,7 @@
             @endauth
         </nav>
         @if(session('success'))
-        <p>{{session('success')}}</p>
+            <p>{{session('success')}}</p>
         @endif
     </div>
 </header>

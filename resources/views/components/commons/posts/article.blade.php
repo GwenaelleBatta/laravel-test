@@ -1,7 +1,20 @@
 @foreach($posts as $post)
     <article class="mt-6">
         <div class="flex flex-col max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
+            @auth
+                <div>
+                    @if($post->user->slug === auth()->user()->slug)
+                        <div class="flex justify-end gap-4">
+                            <a href="posts/edit/{{$post->id}}">✏️</a>
+                            <form action="posts/destroy/{{$post->id}}" method="post" >
+                                @csrf
+                                <label for="destroy" class="hidden">Supprimer ce post</label>
+                                <button name="destroy" id="destroy">❌</button>
+                            </form>
+                            @endif
+                </div>
 
+            @endauth
             <div class="flex items-center justify-between">
                 <div>
                     <a href="/users/{{$post->user->slug}}/posts"
@@ -45,7 +58,6 @@
                     @endif
                     <p>Ratings : {{$post->rating}} /5</p>
                 </div>
-
             </div>
         </div>
     </article>
