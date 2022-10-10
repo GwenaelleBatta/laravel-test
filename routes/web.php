@@ -29,11 +29,11 @@ Route::get('/', [PostController::class, 'index']);
 
 // Various posts indexes
 Route::get('/posts', [PostController::class, 'index']);
-Route::post('posts/destroy/{post:id}', [PostController::class, 'destroy'])->middleware('auth');
+Route::post('posts/destroy/{post}', [PostController::class, 'destroy'])->middleware('auth')->can('delete','post');
 Route::get('/posts/create', [PostController::class, 'create'])->middleware('auth')->can('create',Post::class);
 Route::post('/posts/create', [PostController::class, 'store'])->middleware('auth')->can('create',Post::class);
-Route::get('/posts/edit/{post:id}', [PostController::class, 'edit'])->middleware('auth');;
-Route::post('/posts/edit/{post:id}', [PostController::class, 'update'])->middleware('auth');;
+Route::get('/posts/edit/{post}', [PostController::class, 'edit'])->middleware('auth')->can('update','post');
+Route::post('/posts/edit/{post}', [PostController::class, 'update'])->middleware('auth')->can('update','post');
 
 Route::get('/categories/{category:slug}/posts', PostByCategoriesController::class);
 Route::get('/users/{user:slug}/posts', PostByAuthorsController::class);
