@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -27,7 +28,7 @@ class CommentsSeeder extends Seeder
                 for ($j = 0; $j < $comments_count; $j++) {
                     $user_id = $users_ids[rand(0, 9)]; //Knowing there are 10 users
                     $body = $faker->text;
-                    DB::table('comments')->insert(
+                    Comment::create(
                         compact('body', 'user_id', 'post_id')
                     );
                 }
