@@ -2,19 +2,20 @@
 
 namespace App\View\Components\Forms;
 
+
 use Illuminate\View\Component;
 
 class tinymceEditor extends Component
 {
- //public $post;
+ public $post;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($post)
     {
-
+        $this->post = $post;
     }
 
     /**

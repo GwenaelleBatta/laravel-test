@@ -31,6 +31,7 @@
     <title>Create A New Post - My Awesome Blog</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <x-head.tinymce-config></x-head.tinymce-config>
 </head>
 <body class="bg-gray-200">
 <div class="overflow-x-hidden bg-gray-100">
@@ -67,17 +68,8 @@
                                   rows="5"
                                   class="@error('excerpt')  is-invalid outline outline-red-600 outline-2 @enderror w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">{{old('excerpt')}}</textarea>
 
-                        <label for="body"
-                               class="block mt-8 mb-2 @error('body') text-red-600 @enderror">Post
-                            Body</label>
-                        @error('body')
-                        <div class="text-red-600 my-2">{{ $message }}</div>
-                        @enderror
-                        <textarea name="body"
-                                  id="body"
-                                  rows="10"
-                                  class=" @error('body')  is-invalid outline outline-red-600 outline-2 @enderror w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">{{old('body')}}</textarea>
 
+                        <x-forms.tinymce-editor :post="$post??null"></x-forms.tinymce-editor>
                         <label for="category"
                                class="block mt-8 mb-2 @error('category') text-red-600 @enderror">Post
                             Category</label>
