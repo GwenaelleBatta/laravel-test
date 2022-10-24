@@ -15,11 +15,11 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $name = 'Dominique Vilain';
+        $name = 'Gwenaëlle Batta';
         User::factory()->create([
             'name' => $name,
             'slug' => Str::slug($name),
-            'email' => 'dominique.vilain@hepl.be',
+            'email' => 'gwenaelle.batta@student.hepl.be',
             'is_admin' => true,
         ]);
         User::factory()->count(9)->create();

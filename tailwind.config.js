@@ -6,8 +6,8 @@ module.exports = {
         "./resources/**/*.vue",
     ],
     theme: {
-        ontFamily: {
-            serif: ['Crimson Pro', 'serif'],
+        fontFamily: {
+            sans: ['Hind', 'sans-serif']
         },
         extend: {},
     },
