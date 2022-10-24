@@ -10,9 +10,9 @@
             <div class="w-full lg:w-8/12">
                 <div class="flex items-center justify-between">
                     <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Posts</h1>
-                    @include('partials/_order-posts')
+                    <livewire:select-order/>
                 </div>
-                <x-commons.posts.article :posts="$posts"></x-commons.posts.article>
+                <livewire:article-post :posts="$posts"></livewire:article-post>
                 <div class="mt-8">
                     <div class="flex">
                         <x-commons.pagination :posts="$posts"></x-commons.pagination>
