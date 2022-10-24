@@ -56,6 +56,7 @@
         </div>
     </main>
     <x-commons.footer></x-commons.footer>
+
 </div>
 </body>
 </html>
