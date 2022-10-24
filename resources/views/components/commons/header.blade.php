@@ -12,3 +12,4 @@
     <meta name="theme-color"
           content="#0ed3cf">
     @vite('resources/css/app.css')
+@livewireStyles
