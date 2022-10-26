@@ -14,7 +14,9 @@ use Illuminate\Queue\SerializesModels;
 class PostCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+
     public Post $post;
+
     /**
      * Create a new event instance.
      *
@@ -25,13 +27,4 @@ class PostCreated
         $this->post = $post;
     }
 
-    /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return \Illuminate\Broadcasting\Channel|array
-     */
-    public function broadcastOn()
-    {
-        return new PrivateChannel('channel-name');
-    }
 }

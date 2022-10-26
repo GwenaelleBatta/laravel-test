@@ -1,3 +1,0 @@
-<div>
-    {{$posts->links()}}
-</div>

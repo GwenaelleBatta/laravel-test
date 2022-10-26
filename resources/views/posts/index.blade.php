@@ -1,28 +1,7 @@
-<? php ?>
-<x-commons.header></x-commons.header>
-    <title>Les Posts du blog</title>
-</head>
-<body>
-<x-commons.navigation></x-commons.navigation>
-<div class="overflow-x-hidden bg-gray-100">
-    <main class="px-6 py-8">
-        <div class="container flex justify-between mx-auto">
-            <div class="w-full lg:w-8/12">
-                <div class="flex items-center justify-between">
-                    <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Posts</h1>
-                    <livewire:select-order/>
-                </div>
-                <livewire:article-post :posts="$posts"></livewire:article-post>
-                <div class="mt-8">
-                    <div class="flex">
-                        <x-commons.pagination :posts="$posts"></x-commons.pagination>
-                    </div>
-                </div>
-            </div>
-            <x-commons.aside></x-commons.aside>
-        </div>
-    </main>
-    <x-commons.footer/>
-</body>
-</html>
-
+<x-front-main-layout>
+    <div class="overflow-x-hidden bg-gray-100">
+        <x-commons.navigation></x-commons.navigation>
+        <livewire:posts.excerpts-list-for-indexes :posts="$posts" title="Posts"/>
+        <x-commons.footer></x-commons.footer>
+    </div>
+</x-front-main-layout>

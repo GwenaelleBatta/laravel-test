@@ -13,6 +13,7 @@ use Illuminate\Queue\SerializesModels;
 class PostCreated extends Mailable
 {
     use Queueable, SerializesModels;
+
     public Post $post;
     /**
      * Create a new message instance.
@@ -32,7 +33,7 @@ class PostCreated extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'A new post has been created !',
+            subject: 'A new post has been created',
         );
     }
 
